@@ -10,7 +10,7 @@ namespace MicroNetCore.Data.Abstractions
     {
         Task<IEnumerable<TModel>> FindAsync(Expression<Func<TModel, bool>> predicate = null);
         Task<TModel> GetAsync(long id);
-        Task PostAsync(TModel model);
+        Task<long> PostAsync(TModel model);
         Task PutAsync(long id, TModel model);
         Task DeleteAsync(long id);
     }
