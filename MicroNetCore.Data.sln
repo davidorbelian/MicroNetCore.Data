@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{86237511-C61D-4351-8390-B2971AE1858B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{8215A85C-C432-415D-8BB6-608B2F36AF5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FA4EF4DE-E38B-4009-B34C-59B79840EA6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroNetCore.Data.Abstractions", "src\MicroNetCore.Data.Abstractions\MicroNetCore.Data.Abstractions.csproj", "{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074} = {86237511-C61D-4351-8390-B2971AE1858B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDD5DE74-F1EC-45E3-A381-AB6C8CDD6B74}
+	EndGlobalSection
+EndGlobal
