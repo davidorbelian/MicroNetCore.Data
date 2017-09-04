@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MicroNetCore.Models;
 
 namespace MicroNetCore.Data.Abstractions
 {
     public interface IRepository<TModel>
-        where TModel : class, new()
+        where TModel : class, IModel, new()
     {
         Task<IEnumerable<TModel>> FindAsync(Expression<Func<TModel, bool>> predicate = null);
         Task<TModel> GetAsync(long id);
