@@ -9,7 +9,7 @@ namespace MicroNetCore.Data.Abstractions
     public interface IRepository<TModel>
         where TModel : class, IModel, new()
     {
-        Task<IEnumerable<TModel>> FindAsync(
+        Task<ICollection<TModel>> FindAsync(
             Expression<Func<TModel, bool>> predicate = null);
 
         Task<IPageCollection<TModel>> FindPageAsync(
