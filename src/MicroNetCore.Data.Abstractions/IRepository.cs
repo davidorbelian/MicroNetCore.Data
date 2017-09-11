@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using MicroNetCore.AspNetCore.Paging;
 using MicroNetCore.Models;
 
 namespace MicroNetCore.Data.Abstractions
@@ -12,7 +13,7 @@ namespace MicroNetCore.Data.Abstractions
         Task<ICollection<TModel>> FindAsync(
             Expression<Func<TModel, bool>> predicate = null);
 
-        Task<IPageCollection<TModel>> FindPageAsync(
+        Task<Page<TModel>> FindPageAsync(
             int pageIndex, int pageSize,
             Expression<Func<TModel, bool>> predicate = null);
 
