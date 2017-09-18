@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "Default": "Server=localhost\\FTCOREDEVLOCAL; Database=SqlServerSample; User ID=sa; Password=pass@word;"
+  }
+}
