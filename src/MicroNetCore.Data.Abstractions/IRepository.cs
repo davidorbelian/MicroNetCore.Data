@@ -13,7 +13,7 @@ namespace MicroNetCore.Data.Abstractions
         Task<ICollection<TModel>> FindAsync(
             Expression<Func<TModel, bool>> predicate = null);
 
-        Task<Page<TModel>> FindPageAsync(
+        Task<IEnumerablePage<TModel>> FindPageAsync(
             int pageIndex, int pageSize,
             Expression<Func<TModel, bool>> predicate = null);
 
