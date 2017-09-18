@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{FA4E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.Abstractions", "src\MicroNetCore.Data.Abstractions\MicroNetCore.Data.Abstractions.csproj", "{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.Core", "src\MicroNetCore.Data.Core\MicroNetCore.Data.Core.csproj", "{88951CFC-E085-4EBC-AAE5-178974483AA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,12 +23,17 @@ Global
 		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074} = {86237511-C61D-4351-8390-B2971AE1858B}
+		{88951CFC-E085-4EBC-AAE5-178974483AA5} = {86237511-C61D-4351-8390-B2971AE1858B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDD5DE74-F1EC-45E3-A381-AB6C8CDD6B74}
