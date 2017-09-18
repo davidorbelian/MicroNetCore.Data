@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.Abstracti
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.Core", "src\MicroNetCore.Data.Core\MicroNetCore.Data.Core.csproj", "{88951CFC-E085-4EBC-AAE5-178974483AA5}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.EfCore", "src\MicroNetCore.Data.EfCore\MicroNetCore.Data.EfCore.csproj", "{75324C4C-2E2B-45F0-A726-F57A652F543E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88951CFC-E085-4EBC-AAE5-178974483AA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75324C4C-2E2B-45F0-A726-F57A652F543E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75324C4C-2E2B-45F0-A726-F57A652F543E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75324C4C-2E2B-45F0-A726-F57A652F543E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75324C4C-2E2B-45F0-A726-F57A652F543E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{EA03F3E4-5769-41AD-87E6-8D9B5EEFC074} = {86237511-C61D-4351-8390-B2971AE1858B}
 		{88951CFC-E085-4EBC-AAE5-178974483AA5} = {86237511-C61D-4351-8390-B2971AE1858B}
+		{75324C4C-2E2B-45F0-A726-F57A652F543E} = {86237511-C61D-4351-8390-B2971AE1858B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDD5DE74-F1EC-45E3-A381-AB6C8CDD6B74}
