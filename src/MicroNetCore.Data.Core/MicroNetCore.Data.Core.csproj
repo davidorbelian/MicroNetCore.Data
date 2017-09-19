@@ -2,6 +2,19 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/davidorbelian/MicroNetCore.Data/master/LICENSE</PackageLicenseUrl>
+    <Version>0.0.1-alpha</Version>
+    <Authors>David Orbelian</Authors>
+    <Company>David Orbelian</Company>
+    <Product>MicroNetCore</Product>
+    <Description>Data Access Layer Core for MicroNetCore.</Description>
+    <Copyright>Copyright (c) 2017 David Orbelian</Copyright>
+    <PackageProjectUrl>https://github.com/davidorbelian/MicroNetCore.Data</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/davidorbelian/MicroNetCore.Data</RepositoryUrl>
+    <PackageTags>Data Core</PackageTags>
+    <PackageReleaseNotes>Alpha release.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
