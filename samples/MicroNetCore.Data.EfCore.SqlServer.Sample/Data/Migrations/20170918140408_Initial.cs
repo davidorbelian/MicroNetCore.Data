@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MicroNetCore.Data.EfCore.SqlServer.Sample.Migrations
+namespace MicroNetCore.Data.EfCore.SqlServer.Sample.Data.Migrations
 {
     public partial class Initial : Migration
     {
