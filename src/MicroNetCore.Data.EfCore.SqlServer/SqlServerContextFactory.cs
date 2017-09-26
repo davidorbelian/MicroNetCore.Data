@@ -1,5 +1,4 @@
-﻿using MicroNetCore.Data.Core;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace MicroNetCore.Data.EfCore.SqlServer
 {
@@ -9,7 +8,7 @@ namespace MicroNetCore.Data.EfCore.SqlServer
         public override TContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
-            optionsBuilder.UseSqlServer(Configuration.GetConnectionString());
+            optionsBuilder.UseSqlServer(ConnectionString);
 
             return GetContext(optionsBuilder.Options);
         }

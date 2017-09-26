@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MicroNetCore.Data.EfCore.SqlServer.Sample
 {
-    public class Program
+    public sealed class Program
     {
         public static void Main(string[] args)
         {

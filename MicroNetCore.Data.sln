@@ -19,8 +19,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.EfCore.Sq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroNetCore.Data.EfCore.SqlServer.Sample", "samples\MicroNetCore.Data.EfCore.SqlServer.Sample\MicroNetCore.Data.EfCore.SqlServer.Sample.csproj", "{9A8DA16C-3AE5-4101-B83E-CB8CC575111E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroNetCore.Data.Models", "src\MicroNetCore.Data.Models\MicroNetCore.Data.Models.csproj", "{0D3F87FF-71BB-417C-835A-8B68A66F0B98}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{9A8DA16C-3AE5-4101-B83E-CB8CC575111E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A8DA16C-3AE5-4101-B83E-CB8CC575111E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A8DA16C-3AE5-4101-B83E-CB8CC575111E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0D3F87FF-71BB-417C-835A-8B68A66F0B98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0D3F87FF-71BB-417C-835A-8B68A66F0B98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0D3F87FF-71BB-417C-835A-8B68A66F0B98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0D3F87FF-71BB-417C-835A-8B68A66F0B98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,7 +55,6 @@ Global
 		{75324C4C-2E2B-45F0-A726-F57A652F543E} = {86237511-C61D-4351-8390-B2971AE1858B}
 		{2F2A31EB-C0C2-44AF-8CB5-E28A9BFE9E0A} = {86237511-C61D-4351-8390-B2971AE1858B}
 		{9A8DA16C-3AE5-4101-B83E-CB8CC575111E} = {FA4EF4DE-E38B-4009-B34C-59B79840EA6B}
-		{0D3F87FF-71BB-417C-835A-8B68A66F0B98} = {86237511-C61D-4351-8390-B2971AE1858B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EDD5DE74-F1EC-45E3-A381-AB6C8CDD6B74}

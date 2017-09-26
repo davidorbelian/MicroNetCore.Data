@@ -7,15 +7,15 @@ namespace MicroNetCore.Data.EfCore
     public abstract class EfCoreContextFactory<TContext> : IDesignTimeDbContextFactory<TContext>
         where TContext : EfCoreContext
     {
+        protected readonly string ConnectionString;
+
         protected EfCoreContextFactory()
         {
-            var builder = new ConfigurationBuilder()
-                .AddSettingsFolder();
-
-            Configuration = builder.Build();
+            ConnectionString = new ConfigurationBuilder()
+                .AddSettingsFolder()
+                .Build()
+                .GetConnectionString();
         }
-
-        protected IConfiguration Configuration { get; }
 
         public abstract TContext CreateDbContext(string[] args);
     }

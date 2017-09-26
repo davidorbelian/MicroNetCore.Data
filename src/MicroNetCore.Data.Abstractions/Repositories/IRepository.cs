@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using MicroNetCore.AspNetCore.Paging;
 using MicroNetCore.Models;
 
-namespace MicroNetCore.Data.Abstractions
+namespace MicroNetCore.Data.Abstractions.Repositories
 {
     public interface IRepository<TModel>
         where TModel : class, IModel, new()

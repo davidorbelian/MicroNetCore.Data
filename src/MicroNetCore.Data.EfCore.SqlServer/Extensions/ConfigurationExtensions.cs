@@ -1,4 +1,5 @@
-﻿using MicroNetCore.Data.Abstractions;
+﻿using MicroNetCore.Data.EfCore.Extensions;
+using MicroNetCore.Models.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,8 +11,12 @@ namespace MicroNetCore.Data.EfCore.SqlServer.Extensions
             string connectionString)
             where TContext : DbContext
         {
-            services.AddTransient(typeof(IRepository<>), typeof(SqlServerRepository<>));
+            var modelsTypeBundle = typeof(TContext).Assembly.GetModelsTypeBundle();
+
+            services.AddSingleton(modelsTypeBundle);
+
             services.AddDbContext<TContext>(o => o.UseSqlServer(connectionString));
+            services.AddEfCore(typeof(SqlServerRepository<>), modelsTypeBundle);
 
             return services;
         }

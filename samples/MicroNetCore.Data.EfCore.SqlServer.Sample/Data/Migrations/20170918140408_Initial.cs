@@ -11,7 +11,7 @@ namespace MicroNetCore.Data.EfCore.SqlServer.Sample.Data.Migrations
                 "SampleClassTwo",
                 table => new
                 {
-                    Id = table.Column<long>("bigint", nullable: false)
+                    Id = table.Column<long>("bigint")
                         .Annotation("SqlServer:ValueGenerationStrategy",
                             SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>("nvarchar(max)", nullable: true)
@@ -22,11 +22,11 @@ namespace MicroNetCore.Data.EfCore.SqlServer.Sample.Data.Migrations
                 "SampleClassOne",
                 table => new
                 {
-                    Id = table.Column<long>("bigint", nullable: false)
+                    Id = table.Column<long>("bigint")
                         .Annotation("SqlServer:ValueGenerationStrategy",
                             SqlServerValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>("nvarchar(max)", nullable: true),
-                    SampleClassTwoId = table.Column<long>("bigint", nullable: false)
+                    SampleClassTwoId = table.Column<long>("bigint")
                 },
                 constraints: table =>
                 {

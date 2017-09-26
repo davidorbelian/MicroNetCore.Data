@@ -5,21 +5,42 @@ using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using Humanizer;
-using MicroNetCore.Data.Abstractions;
-using MicroNetCore.Data.Models.Collections;
+using MicroNetCore.Collections;
+using MicroNetCore.Data.Core.DataModels;
 using MicroNetCore.Models;
-using MicroNetCore.Models.Collections;
 
-namespace MicroNetCore.Data.Models
+namespace MicroNetCore.Data.Core.Services
 {
-    public sealed class DataModelListProvider : IDataModelListProvider
+    public sealed class DataModelProvider : IDataModelProvider
     {
         private readonly ModuleBuilder _moduleBuilder;
 
-        public DataModelListProvider()
+        public DataModelProvider()
         {
             _moduleBuilder = CreateModuleBuilder();
         }
+
+        #region IDataModelListProvider
+
+        public IEnumerable<Type> Get(TypeBundle<IModel> types)
+        {
+            // Create TypeBuilders
+            var entityModelTypeBuilders = CreateEntityModelTypeBuilders(types.Types);
+
+            // Create Types
+            var entityModelTypes = entityModelTypeBuilders.ToDictionary(t => t.Key, t => t.Value.CreateType());
+
+            // Add Types to Cache
+            foreach (var typeBuilder in entityModelTypes)
+                EntityTypesCache.Add(typeBuilder.Key, typeBuilder.Value);
+
+            // Return all DataModelTypes
+            return new List<Type>()
+                .Concat(EntityTypesCache.Values)
+                .Concat(RelationTypesCache.Values);
+        }
+
+        #endregion
 
         #region Constants
 
@@ -38,34 +59,12 @@ namespace MicroNetCore.Data.Models
         private static readonly IDictionary<Type, Type> EntityTypesCache;
         private static readonly IDictionary<(Type, Type), Type> RelationTypesCache;
 
-        static DataModelListProvider()
+        static DataModelProvider()
         {
             EntityTypesCache = new Dictionary<Type, Type>();
             RelationTypesCache = new Dictionary<(Type, Type), Type>();
         }
 
-        #endregion
-        
-        #region IDataModelListProvider
-
-        public IDataModelTypeList Get(IModelTypeList types)
-        {
-            // Create TypeBuilders
-            var entityModelTypeBuilders = CreateEntityModelTypeBuilders(types);
-
-            // Create Types
-            var entityModelTypes = entityModelTypeBuilders.ToDictionary(t => t.Key, t => t.Value.CreateType());
-
-            // Add Types to Cache
-            foreach (var typeBuilder in entityModelTypes)
-                EntityTypesCache.Add(typeBuilder.Key, typeBuilder.Value);
-
-            // Return all DataModelTypes
-            return new DataModelTypeList(new List<Type>()
-                .Concat(EntityTypesCache.Values)
-                .Concat(RelationTypesCache.Values));
-        }
-        
         #endregion
 
         #region Helpers
@@ -116,7 +115,7 @@ namespace MicroNetCore.Data.Models
         private TypeBuilder GetEntityModelTypeBuilder(Type type)
         {
             var builder = _moduleBuilder.DefineType($"{type.Name}{TypeNamePostfix}", DmTypeAttributes);
-            builder.AddInterfaceImplementation(typeof(IEntityDataModel));
+            builder.AddInterfaceImplementation(typeof(IDataModel));
 
             return builder;
         }
@@ -124,7 +123,7 @@ namespace MicroNetCore.Data.Models
         private TypeBuilder GetRelationModelTypeBuilder(Type one, Type two)
         {
             var builder = _moduleBuilder.DefineType($"{one.Name}To{two.Name}{TypeNamePostfix}", DmTypeAttributes);
-            builder.AddInterfaceImplementation(typeof(IRelationDataModel));
+            builder.AddInterfaceImplementation(typeof(IRelationModel));
 
             return builder;
         }
@@ -291,8 +290,8 @@ namespace MicroNetCore.Data.Models
             var name = $"{typeName}Id";
 
             var fieldBuilder = typeBuilder.DefineField(
-                name.Camelize(), 
-                typeof(long), 
+                name.Camelize(),
+                typeof(long),
                 FieldAttributes.Private);
 
             var propertyBuilder = typeBuilder.DefineProperty(
@@ -323,7 +322,7 @@ namespace MicroNetCore.Data.Models
             propertyBuilder.SetSetMethod(GetSetMethod(typeBuilder, propertyBuilder, fieldBuilder));
             propertyBuilder.SetGetMethod(GetGetMethod(typeBuilder, propertyBuilder, fieldBuilder));
         }
-        
+
         #endregion
 
         #endregion
@@ -336,7 +335,7 @@ namespace MicroNetCore.Data.Models
                 $"set_{property.Name}",
                 DmMethodAttributes,
                 null,
-                new[] { property.PropertyType });
+                new[] {property.PropertyType});
 
             var ilGenerator = setMethod.GetILGenerator();
 
@@ -364,7 +363,7 @@ namespace MicroNetCore.Data.Models
 
             return getMethod;
         }
-        
+
         #endregion
 
         #endregion

@@ -1,6 +1,6 @@
 ﻿using MicroNetCore.Models;
 
-namespace MicroNetCore.Data.Abstractions
+namespace MicroNetCore.Data.Abstractions.Repositories
 {
     public interface IRepositoryFactory
     {
