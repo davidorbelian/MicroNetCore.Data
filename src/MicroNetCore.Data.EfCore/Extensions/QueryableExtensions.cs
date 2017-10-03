@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using MicroNetCore.Models;
+using MicroNetCore.Models.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace MicroNetCore.Data.EfCore.Extensions
@@ -24,48 +25,36 @@ namespace MicroNetCore.Data.EfCore.Extensions
         {
             return await queryable.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();
         }
-        
+
         internal static IQueryable<TModel> Include<TModel>(this IQueryable<TModel> query,
-            IEnumerable<PropertyInfo> inclideProperties)
+            IEnumerable<PropertyInfo> includeProperties)
             where TModel : class, IEntityModel
         {
-            return inclideProperties.Aggregate(query, (current, prop) => current.Include(prop));
+            return includeProperties.Aggregate(query, (current, prop) => current.Include(prop));
         }
 
         internal static IQueryable<TModel> Include<TModel>(this IQueryable<TModel> query, PropertyInfo property)
             where TModel : class, IEntityModel
         {
-            query.Include(property.Name);
+            query = query.Include(property.Name);
+
+            if (!IsRelationType(property.PropertyType)) return query;
 
             var relationType = GetRelationType(property.PropertyType);
+            var relationProperty = relationType.GetRelationProperty(typeof(TModel));
+            var relationPropertyName = relationProperty.Name;
 
-            return relationType != null
-                ? query.Include($"{property.Name}.{GetIncludePropName(relationType, typeof(TModel))}")
-                : query;
+            return query.Include($"{property.Name}.{relationPropertyName}");
+        }
+
+        private static bool IsRelationType(Type type)
+        {
+            return typeof(IEnumerable<IRelationModel>).IsAssignableFrom(type);
         }
 
         private static Type GetRelationType(Type type)
         {
-            return typeof(IEnumerable<IRelationModel>).IsAssignableFrom(type)
-                ? type.GetGenericArguments().First()
-                : null;
-        }
-
-        private static string GetIncludePropName(Type relationType, Type originalType)
-        {
-            var generics = relationType
-                .GetInterfaces()
-                .Single(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRelationModel<,>))
-                .GetGenericArguments();
-
-            if (generics[0] == originalType)
-                return "Entity2";
-
-            if (generics[1] == originalType)
-                return "Entity1";
-
-            throw new IndexOutOfRangeException(
-                $"Can not found ThenIncludePropName for {originalType.Name} and {relationType.Name}");
+            return type.GetGenericArguments().First();
         }
     }
 }

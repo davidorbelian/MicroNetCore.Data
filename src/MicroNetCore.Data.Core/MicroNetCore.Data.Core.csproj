@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://raw.githubusercontent.com/davidorbelian/MicroNetCore.Data/master/LICENSE</PackageLicenseUrl>
-    <Version>0.1.0-alpha</Version>
+    <Version>0.1.1-alpha</Version>
     <Authors>David Orbelian</Authors>
     <Company>David Orbelian</Company>
     <Product>MicroNetCore</Product>
