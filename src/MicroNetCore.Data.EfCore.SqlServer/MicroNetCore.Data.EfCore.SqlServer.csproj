@@ -9,7 +9,7 @@
     <Authors>David Orbelian</Authors>
     <Company>David Orbelian</Company>
     <Product>MicroNetCore</Product>
-    <Description>Data Access Layer for SQL Server over EntityFramework for MicroNetCore.</Description>
+    <Description>Data Access Layer for SQL Server over EntityFrameworkCore for MicroNetCore.</Description>
     <Copyright>Copyright (c) 2017 David Orbelian</Copyright>
     <PackageProjectUrl>https://github.com/davidorbelian/MicroNetCore.Data</PackageProjectUrl>
     <RepositoryUrl>https://github.com/davidorbelian/MicroNetCore.Data</RepositoryUrl>
