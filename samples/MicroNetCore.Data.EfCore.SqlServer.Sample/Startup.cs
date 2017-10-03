@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 
 namespace MicroNetCore.Data.EfCore.SqlServer.Sample
 {
@@ -26,7 +27,9 @@ namespace MicroNetCore.Data.EfCore.SqlServer.Sample
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.AddSqlServerEfCore<SampleContext>(Configuration.GetConnectionString());
-            services.AddMvc();
+            services
+                .AddMvc()
+                .AddJsonOptions(o => o.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
             return services.BuildServiceProvider();
         }
