@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 using MicroNetCore.AspNetCore.Paging;
 using MicroNetCore.Models;
 
-namespace MicroNetCore.Data.Abstractions.Repositories
+namespace MicroNetCore.Data.Abstractions
 {
     public interface IRepository<TModel>
-        where TModel : class, IModel, new()
+        where TModel : class, IEntityModel, new()
     {
         Task<ICollection<TModel>> FindAsync(
             Expression<Func<TModel, bool>> predicate = null);

@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseUrl>https://raw.githubusercontent.com/davidorbelian/MicroNetCore.Data/master/LICENSE</PackageLicenseUrl>
-    <Version>0.0.11-alpha</Version>
+    <Version>0.1.0-alpha</Version>
     <Authors>David Orbelian</Authors>
     <Company>David Orbelian</Company>
     <Product>MicroNetCore</Product>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="MicroNetCore.AspNetCore.Paging" Version="0.0.4-alpha" />
-    <PackageReference Include="MicroNetCore.Models" Version="0.0.6-alpha" />
+    <PackageReference Include="MicroNetCore.Models" Version="0.0.10-alpha" />
   </ItemGroup>
 
 </Project>

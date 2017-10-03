@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using MicroNetCore.AspNetCore.Paging;
-using MicroNetCore.Data.Abstractions.Repositories;
+using MicroNetCore.Data.Abstractions;
 using MicroNetCore.Models;
 
 namespace MicroNetCore.Data.Core
 {
     public abstract class Repository<TModel> : IRepository<TModel>
-        where TModel : class, IModel, new()
+        where TModel : class, IEntityModel, new()
     {
         #region IRepository
 

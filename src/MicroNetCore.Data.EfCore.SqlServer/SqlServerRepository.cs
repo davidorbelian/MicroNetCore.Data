@@ -3,10 +3,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MicroNetCore.Data.EfCore.SqlServer
 {
-    public sealed class SqlServerRepository<TModel> : EfCoreRepository<TModel>
-        where TModel : class, IModel, new()
+    public sealed class SqlServerRepository<TModel, TContext> : EfCoreRepository<TModel, TContext>
+        where TModel : class, IEntityModel, new()
+        where TContext : DbContext
     {
-        public SqlServerRepository(DbContext context) : base(context)
+        public SqlServerRepository(TContext context) : base(context)
         {
         }
     }

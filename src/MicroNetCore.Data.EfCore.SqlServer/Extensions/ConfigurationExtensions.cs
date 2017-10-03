@@ -16,7 +16,7 @@ namespace MicroNetCore.Data.EfCore.SqlServer.Extensions
             services.AddSingleton(modelsTypeBundle);
 
             services.AddDbContext<TContext>(o => o.UseSqlServer(connectionString));
-            services.AddEfCore(typeof(SqlServerRepository<>), modelsTypeBundle);
+            services.AddEfCore<TContext>(typeof(SqlServerRepository<,>), modelsTypeBundle);
 
             return services;
         }

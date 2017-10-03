@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 using MicroNetCore.AspNetCore.Paging;
 using MicroNetCore.AspNetCore.ResponseExceptions.Exceptions;
@@ -14,13 +15,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MicroNetCore.Data.EfCore
 {
-    public abstract class EfCoreRepository<TModel> : Repository<TModel>
-        where TModel : class, IModel, new()
+    public abstract class EfCoreRepository<TModel, TContext> : Repository<TModel>
+        where TModel : class, IEntityModel, new()
+        where TContext : DbContext
     {
-        private readonly DbContext _context;
+        private readonly TContext _context;
         private readonly DbSet<TModel> _set;
 
-        protected EfCoreRepository(DbContext context)
+        protected EfCoreRepository(TContext context)
         {
             _context = context;
             _set = context.Set<TModel>();
@@ -30,10 +32,13 @@ namespace MicroNetCore.Data.EfCore
 
         public override async Task<ICollection<TModel>> FindAsync(Expression<Func<TModel, bool>> predicate)
         {
-            if (predicate == null) predicate = model => true;
+            if (predicate == null)
+                predicate = model => true;
 
-            return await _set
+            return await _context
+                .Set<TModel>()
                 .AsNoTracking()
+                .Include(IncludeProperties)
                 .Where(predicate)
                 .ToListAsync();
         }
@@ -90,6 +95,13 @@ namespace MicroNetCore.Data.EfCore
             _set.Remove(dbModel);
             await _context.SaveChangesAsync();
         }
+
+        #endregion
+
+        #region Helpers
+
+        public IEnumerable<PropertyInfo> IncludeProperties =>
+            _context.GetNavigationProperties<TModel>();
 
         #endregion
     }
